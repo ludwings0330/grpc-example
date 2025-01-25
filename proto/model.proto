@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package modelservice;
+
+option go_package = "proto/modelservice";
+
+message ModelRequest {
+  string model_name = 1;
+  string version = 2;
+  repeated string features = 3;
+}
+
+message ModelResponse {
+  string status = 1;
+  string message = 2;
+}
+
+message InferenceRequest {
+  string model_name = 1;
+  map<string, float> input_features = 2;  // 키-값 쌍으로 feature 전송
+}
+
+message InferenceResponse {
+  float prediction = 1;
+}
+
+service ModelService {
+  rpc GetModelInfo(ModelRequest) returns (ModelResponse);
+  rpc RunInference(InferenceRequest) returns (InferenceResponse);
+}
