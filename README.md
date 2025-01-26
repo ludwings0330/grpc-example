@@ -29,6 +29,25 @@ go run server.go
 go run client.go
 ```
 
+5. Result
+
+```shell
+➜  server git:(main) ✗ go run server.go
+2025/01/26 11:44:27 Server is running on port 50051...
+2025/01/26 11:44:51 [Server] GetModelInfo
+2025/01/26 11:44:51 Received request for model: test_model, version: v1.0
+2025/01/26 11:44:51 [Server] RunInference
+2025/01/26 11:44:51 Received request for model: test_model, features: map[A:10.3 B:12.5]
+```
+
+```shell
+➜  client git:(main) ✗ go run client.go
+2025/01/26 11:44:51 [Client] GetModelInfo
+2025/01/26 11:44:51 Response: Model is available
+2025/01/26 11:44:51 [Client] runInference
+2025/01/26 11:44:51 RunInference Response: prediction:7.7
+```
+
 ## Summary
 
 ### 1. Generating Go Structs from proto file
