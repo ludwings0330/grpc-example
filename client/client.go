@@ -41,9 +41,10 @@ func main() {
 		ModelName: "test_model",
 		InputFeatures: map[string]float32{"A": 10.3, "B": 12.5},
 	}
+
 	InferResp, err := client.RunInference(ctx, InferReq)
 	if err != nil {
-		log.Fatal("Error calling RunInference: %v", err)
+		log.Fatalf("Error calling RunInference: %v", err)
 	}
 
 	log.Printf("RunInference Response: %v", InferResp)
