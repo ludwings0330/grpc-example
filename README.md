@@ -2,34 +2,19 @@
 
 ## How to use
 
-1. Install Go gRPC and protocol Buffers plugins
+1. run server
 
 ```shell
-go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+make server
 ```
 
-2. Compile proto
+2. run client
 
 ```shell
-cd proto
-# mkdir modelservice
-protoc --go_out=./modelservice --go-grpc_out=./modelservice --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative model.proto
+make client
 ```
 
-3. run server
-
-```shell
-go run server.go
-```
-
-4. run client
-
-```shell
-go run client.go
-```
-
-5. Result
+3. Result
 
 ```shell
 ➜  server git:(main) ✗ go run server.go
@@ -52,11 +37,16 @@ go run client.go
 
 ### 1. Generating Go Structs from proto file
 
+- Install Go gRPC and protocol Buffers plugins
+```shell
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
 - The .proto file is used to define the data `structures` and `services`, and Go code is generated using the `protoc` compiler along with the `protoc-gen-go` and `protoc-gen-go-grpc` plugins
 - Example command to generate Go code from a proto file
 
 ```shell
-protoc --go_out=. --go-grpc_out=. --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative model.proto
+protoc --go_out=./modelservice --go-grpc_out=./modelservice --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative model.proto
 ```
 
 ---
